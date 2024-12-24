@@ -1,5 +1,7 @@
 def filter_by_state(operation_info: list[dict], state: str = 'EXECUTED') -> list[dict]:
-    '''Возвращает список операций по ключу state'''
+    """
+    Возвращает список операций по ключу state
+    """
 
     filtered_by_state = []
 
@@ -11,7 +13,9 @@ def filter_by_state(operation_info: list[dict], state: str = 'EXECUTED') -> list
 
 
 def sort_by_date(operation_info: list[dict], is_reversed: bool = True) -> list[dict]:
-    '''Возвращает список операций, отсортированный по дате'''
+    """
+    Возвращает список операций, отсортированный по дате
+    """
 
     sorted_by_date = operation_info.copy()
     sorted_by_date.sort(key=lambda x: x['date'], reverse=is_reversed)
