@@ -58,10 +58,13 @@ def get_date(date_and_time: str) -> str:
         month = tmp_list[1]
         day = tmp_list[2][:2]
 
-        if (len(year) != 4 or len(month) != 2 or len(day) != 2) and (month not in range(1, 13) or day not in range(1, 32)):
+        if ((len(year) != 4 or len(month) != 2 or len(day) != 2)
+                and (month not in range(1, 13) or day not in range(1, 32))):
+
             return 'Введите корректный формат даты'
         else:
-            if year.isdigit() == False or month.isdigit() == False or day.isdigit() == False:
+            if not year.isdigit() or not month.isdigit() or not day.isdigit():
+
                 return 'В дате должны содержаться только цифры'
             else:
                 date = f'{day}.{month}.{year}'

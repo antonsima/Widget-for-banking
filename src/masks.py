@@ -16,11 +16,12 @@ def get_mask_card_number(card_number: int) -> str:
         for i in range(2, len(card_number_to_list) - 2):
             card_number_to_list[i] = "****"
 
-        two_last_indexes = card_number_to_list.pop(-2) + card_number_to_list.pop(-1)
-        last_stars = ''.join(['*' for i in range(len(two_last_indexes[:-4]))])
-        two_last_indexes = last_stars + two_last_indexes[-4:]
-        two_last_indexes = two_last_indexes[0:4] + ',' + two_last_indexes[4:]
-        two_last_indexes = two_last_indexes.split(',')
+        two_last_indexes_str = card_number_to_list.pop(-2) + card_number_to_list.pop(-1)
+        last_stars = ''.join(['*' for i in range(len(two_last_indexes_str[:-4]))])
+        two_last_indexes_str = last_stars + two_last_indexes_str[-4:]
+        two_last_indexes_str = two_last_indexes_str[0:4] + ',' + two_last_indexes_str[4:]
+
+        two_last_indexes = two_last_indexes_str.split(',')
 
         card_number_to_list.extend(two_last_indexes)
 
