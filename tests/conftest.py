@@ -44,10 +44,11 @@ def problem_dates_of_operations():
             {'id': 594226727, 'state': 'CANCELED', 'date': '2018'},
             {'id': 939719570, 'state': 'EXECUTED', 'date': '02:08:58.425572'}]
 
+
 @pytest.fixture
 def test_transactions():
-    return (
-    [
+
+    return ([
         {
             "id": 939719570,
             "state": "EXECUTED",
@@ -123,14 +124,12 @@ def test_transactions():
             "from": "Visa Platinum 1246377376343588",
             "to": "Счет 14211924144426031657"
         }
-    ]
-)
+    ])
 
 
 @pytest.fixture
 def usd_transactions():
-    return (
-    [
+    return ([
         {
             "id": 939719570,
             "state": "EXECUTED",
@@ -176,5 +175,4 @@ def usd_transactions():
             "from": "Visa Classic 6831982476737658",
             "to": "Visa Platinum 8990922113665229"
         }
-    ]
-)
+    ])

@@ -1,15 +1,10 @@
 from typing import Any, Generator
 
-from tests.conftest import test_transactions
-
 
 def filter_by_currency(transactions: list[dict], currency: str) -> Generator[dict, Any, None]:
     """
     Принимает список словарей и валюту транзакций и возвращает итератор, результат фильтрации
     """
-
-
-    # filtered_transactions = filter(lambda x: x.get("operationAmount").get("currency").get("code") == currency, transactions)
     if transactions:
         for transaction in transactions:
             get_operation_amount = transaction.get('operationAmount')
