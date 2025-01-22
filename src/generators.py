@@ -21,9 +21,6 @@ def filter_by_currency(transactions: list[dict], currency: str) -> Generator[dic
                         yield transaction
             continue
 
-    while True:
-        yield None
-
 
 def transaction_descriptions(transactions: list[dict]) -> Generator[Any, Any, None]:
     """
@@ -32,9 +29,6 @@ def transaction_descriptions(transactions: list[dict]) -> Generator[Any, Any, No
     if transactions:
         for transaction in transactions:
             yield transaction.get("description")
-
-    while True:
-        yield None
 
 
 def card_number_generator(start: int, stop: int) -> Generator[str, Any, None]:
@@ -45,6 +39,3 @@ def card_number_generator(start: int, stop: int) -> Generator[str, Any, None]:
         for number in range(start, stop + 1):
             card_number_gen = '0' * (16 - len(str(number))) + str(number)
             yield f'{card_number_gen[:4]} {card_number_gen[4:8]} {card_number_gen[8:12]} {card_number_gen[12:]}'
-
-    else:
-        yield None
