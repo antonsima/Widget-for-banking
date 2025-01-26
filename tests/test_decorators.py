@@ -5,7 +5,10 @@ from src.decorators import log
 
 def test_log_console():
     @log()
-    def my_function(x, y):
+    def my_function(x: int, y: int) -> int:
+        """
+        Сложение двух чисел
+        """
         return x + y
 
     result = my_function(1, 6)
@@ -15,7 +18,10 @@ def test_log_console():
 
 def test_log_file():
     @log(filename='mylog.txt')
-    def my_function(x, y):
+    def my_function(x: int, y: int) -> int:
+        """
+        Сложение двух чисел
+        """
         return x + y
 
     my_function(1, 6)
@@ -28,7 +34,10 @@ def test_log_file():
 
 def test_log_console_error():
     @log()
-    def my_function(x, y):
+    def my_function(x: int, y: int) -> int:
+        """
+        Сложение двух чисел
+        """
         return x + y
 
     result = my_function(1, '6')
@@ -39,7 +48,10 @@ error: тип ошибки unsupported operand type(s) for +: 'int' and 'str'
 
 def test_log_file_error():
     @log(filename='mylog.txt')
-    def my_function(x, y):
+    def my_function(x: int, y: int) -> int:
+        """
+        Сложение двух чисел
+        """
         return x + y
 
     my_function(1, '6')

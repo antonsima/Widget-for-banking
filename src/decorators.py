@@ -1,14 +1,21 @@
 import os
 from functools import wraps
+from typing import Callable
+
+from typing_extensions import ParamSpec, TypeVar
 
 
-def log(filename=''):
+P = ParamSpec('P')
+T = TypeVar('T')
+
+
+def log(filename: str = '') -> Callable[[Callable[P, T]], Callable[P, str]]:
     if filename:
         PATH_TO_LOGS = os.path.join(os.path.dirname(__file__), "..", "logs", str(filename))
 
-    def decorator(func):
+    def decorator(func: Callable[P, T]) -> Callable[P, str]:
         @wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args: P.args, **kwargs: P.kwargs) -> str:
             try:
                 result = func(*args, **kwargs)
             except Exception as e:
