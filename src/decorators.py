@@ -9,6 +9,10 @@ T = TypeVar('T')
 
 
 def log(filename: str = '') -> Callable[[Callable[P, T]], Callable[P, str]]:
+    """
+    Декоратор вывода имени функции и ее результата выполнения.
+    При ошибке выдает имя функции, тип ошибки и входные параметры функции
+    """
     if filename:
         PATH_TO_LOGS = os.path.join(os.path.dirname(__file__), "..", "logs", str(filename))
 
