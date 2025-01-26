@@ -4,7 +4,6 @@ from typing import Callable
 
 from typing_extensions import ParamSpec, TypeVar
 
-
 P = ParamSpec('P')
 T = TypeVar('T')
 
