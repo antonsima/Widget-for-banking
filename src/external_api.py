@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 api_key = os.getenv('API_KEY')
 
+
 def get_amount_rub(transaction: dict) -> float:
     """ Принимает транзакцию в виде словаря и возвращает итоговую сумму в рублях """
 
@@ -26,7 +27,7 @@ def get_amount_rub(transaction: dict) -> float:
         status_code = response.status_code
 
         if status_code == 200:
-            result = round(float(dict(json.loads(response.text))['result']), 2)
+            result = round(float(response.json()['result']), 2)
         else:
             result = 'Something went wrong'
 
