@@ -1,3 +1,0 @@
-my_function
-error: тип ошибки unsupported operand type(s) for +: 'int' and 'str'
-Входные параметры: (1, '6'), {}
