@@ -23,7 +23,9 @@ operations_result = [{"id": 441945886,
 
 
 def test_get_transactions_from_json():
-    path_to_json = os.path.join(os.path.dirname(__file__), "..", "data", "operations_for_test.json")
-    wrong_path_to_json = os.path.join(os.path.dirname(__file__), "..", "data", "wrong_path")
+    path_to_json = os.path.join(os.path.dirname(__file__), "operations_for_test.json")
+    wrong_path_to_json = os.path.join(os.path.dirname(__file__), "wrong_path")
+    path_to_not_list_file = os.path.join(os.path.dirname(__file__), "not_list_operations_for_test.json")
     assert get_transactions_from_json(path_to_json) == operations_result
     assert get_transactions_from_json(wrong_path_to_json) == []
+    assert get_transactions_from_json(path_to_not_list_file) == []
