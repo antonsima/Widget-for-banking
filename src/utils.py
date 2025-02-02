@@ -9,7 +9,7 @@ def get_transactions_from_json(path_to_file: str) -> list:
             data = json.load(file)
     except (json.JSONDecodeError, FileNotFoundError):
         return []
-    if type(data) != list:
+    if type(data) is not list:
         return []
     else:
         return data
