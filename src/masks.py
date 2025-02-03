@@ -1,7 +1,6 @@
 import logging
 import os
 
-
 logger = logging.getLogger(__name__)
 path_to_log = os.path.join(os.path.dirname(__file__), "..", "logs", "masks.log")
 file_handler = logging.FileHandler(path_to_log, "w", encoding="utf-8")
