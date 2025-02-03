@@ -1,6 +1,14 @@
-from src.logger import setup_logging
+import logging
+import os
 
-logger = setup_logging(__file__)
+
+logger = logging.getLogger(__name__)
+path_to_log = os.path.join(os.path.dirname(__file__), "..", "logs", "masks.log")
+file_handler = logging.FileHandler(path_to_log, "w", encoding="utf-8")
+file_formatter = logging.Formatter('%(asctime)s %(filename)s %(levelname)s: %(message)s')
+file_handler.setFormatter(file_formatter)
+logger.addHandler(file_handler)
+logger.setLevel(logging.DEBUG)
 
 
 def get_mask_card_number(card_number: int) -> str:
