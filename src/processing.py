@@ -1,6 +1,7 @@
 import re
 from collections import Counter
-from typing import Union
+
+import pandas as pd
 
 from src.widget import get_date
 
@@ -13,13 +14,14 @@ def filter_by_state(operation_info: list[dict], state: str = 'EXECUTED') -> list
     filtered_by_state = []
 
     for operation in operation_info:
-        if operation['state'] == state:
-            filtered_by_state.append(operation)
+        if operation.get('state') is not None and pd.isna(operation.get('state')) is not True:
+            if operation['state'].lower() == state.lower():
+                filtered_by_state.append(operation)
 
     return filtered_by_state
 
 
-def sort_by_date(operation_info: list[dict], is_reversed: bool = True) -> Union[list[dict], str]:
+def sort_by_date(operation_info: list[dict], is_reversed: bool = True) -> list[dict]:
     """
     Возвращает список операций, отсортированный по дате
     """
@@ -27,7 +29,8 @@ def sort_by_date(operation_info: list[dict], is_reversed: bool = True) -> Union[
     for operation in operation_info:
         if (get_date(operation['date']) == 'Введите корректный формат даты'
                 or get_date(operation['date']) == 'В дате должны содержаться только цифры'):
-            return 'Введите корректный формат даты'
+            print('Введите корректный формат даты')
+            return []
 
     sorted_by_date = operation_info.copy()
     sorted_by_date.sort(key=lambda x: x['date'], reverse=is_reversed)
@@ -67,7 +70,7 @@ def get_category_count(transactions: list[dict], categories: list[str]) -> dict:
 
     for transaction in transactions:
         if transaction['description'].lower() in categories:
-            tmp_list.append(transaction['description'].lower())
+            tmp_list.append(transaction['description'].capitalize())
 
     category_count = dict(Counter(tmp_list))
 

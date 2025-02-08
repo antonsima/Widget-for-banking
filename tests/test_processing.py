@@ -12,5 +12,5 @@ def test_filter_by_state(test_operations, executed_operations, canceled_operatio
 def test_sort_by_date(test_operations, direct_sort, reversed_sort, problem_dates_of_operations):
     assert sort_by_date(test_operations, True) == reversed_sort
     assert sort_by_date(test_operations, False) == direct_sort
-    assert sort_by_date(problem_dates_of_operations) == 'Введите корректный формат даты'
+    assert sort_by_date(problem_dates_of_operations) == []
     assert sort_by_date([]) == []
