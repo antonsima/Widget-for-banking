@@ -185,8 +185,12 @@ def transaction_information(transaction: dict) -> str:
 if __name__ == '__main__':
     final_transactions = main()
 
-    print('Распечатываю итоговый список транзакций...')
-    print(f'Всего банковских операций в выборке: {len(final_transactions)}')
+    if final_transactions:
+        print('Распечатываю итоговый список транзакций...')
+        print(f'Всего банковских операций в выборке: {len(final_transactions)}')
 
-    for transaction in final_transactions:
-        print(transaction_information(transaction))
+        for transaction in final_transactions:
+            print(transaction_information(transaction))
+    else:
+        print('''
+Не найдено ни одной транзакции, подходящей под ваши условия фильтрации''')
