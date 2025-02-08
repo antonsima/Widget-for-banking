@@ -48,25 +48,24 @@ def test_get_transactions_from_csv(mock_get):
 
 
 def test_get_transactions_from_empty_csv():
-    assert get_transactions_from_csv(path_to_empty_csv) == "No columns to parse from file: Пустой CSV файл"
+    assert get_transactions_from_csv(path_to_empty_csv) == []
 
 
 def test_get_transactions_from_empty_xlsx():
-    assert get_transactions_from_xlsx(path_to_empty_xlsx) == "[]: Пустой XLSX файл"
+    assert get_transactions_from_xlsx(path_to_empty_xlsx) == []
 
 
 def test_get_transactions_from_not_found_csv():
-    assert get_transactions_from_csv("test.csv") == "[Errno 2] No such file or directory: 'test.csv': Файл не найден"
+    assert get_transactions_from_csv("test.csv") == []
 
 
 def test_get_transactions_from_not_found_xlsx():
-    assert (get_transactions_from_xlsx("test.xlsx")
-            == "[Errno 2] No such file or directory: 'test.xlsx': Файл не найден")
+    assert get_transactions_from_xlsx("test.xlsx") == []
 
 
 def test_get_transactions_from_wrong_csv():
-    assert get_transactions_from_csv(path_to_wrong_csv) == "'id': Не найден ключ"
+    assert get_transactions_from_csv(path_to_wrong_csv) == []
 
 
 def test_get_transactions_from_wrong_xlsx():
-    assert get_transactions_from_xlsx(path_to_wrong_xlsx) == "'id': Не найден ключ"
+    assert get_transactions_from_xlsx(path_to_wrong_xlsx) == []
